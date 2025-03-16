@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legislative Timeline</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .timeline {
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-top: 50px;
+        }
+        .block {
+            flex: 1;
+            height: 60px;
+            background-color: steelblue;
+            margin: 0 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 5px;
+            position: relative;
+        }
+        .block::after {
+            content: attr(data-year);
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: #333;
+        }
+        .block:first-child::before {
+            content: attr(data-start);
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: #333;
+        }
+        .block:last-child::after {
+            content: attr(data-end);
+            position: absolute;
+            bottom: -25px;
+            right: 0;
+            transform: translateX(50%);
+            font-size: 12px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Brazilian Congress Legislative Sessions (2003–2024)</h1>
+    <div class="timeline">
+
+        <div class="block" data-year="2003" data-start="2003" data-end="2007">
+            52
+        </div>
+    
+        <div class="block" data-year="2007" data-start="2007" data-end="2011">
+            53
+        </div>
+    
+        <div class="block" data-year="2011" data-start="2011" data-end="2015">
+            54
+        </div>
+    
+        <div class="block" data-year="2015" data-start="2015" data-end="2019">
+            55
+        </div>
+    
+        <div class="block" data-year="2019" data-start="2019" data-end="2023">
+            56
+        </div>
+    
+    </div>
+</body>
+</html>
