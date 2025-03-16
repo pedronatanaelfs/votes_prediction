@@ -276,3 +276,4 @@ data/classified_llm_datasets/classified_voting_texts_batch_87.csv
 data/classified_llm_datasets/classified_voting_texts_batch_88.csv
 data/classified_llm_datasets/classified_voting_texts_batch_9.csv
 combined_data.csv
+.env
