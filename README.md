@@ -1,87 +1,76 @@
+# Votes Prediction Project README
 
-# Chamber of Deputies Open Data Project
-
-This project fetches all propositions data from the Brazilian Chamber of Deputies Open Data API and performs analysis in Jupyter notebooks. The environment for this project can be reproduced using **Docker** or **Conda**.
+This project focuses on predicting Brazilian federal deputies' votes based on historical voting data, author characteristics, and bill proposals.
 
 ## Project Structure
 
-- **main.py**: The main file that fetches data from the API and saves it in a CSV file.
-- **all_propositions.csv**: The generated file containing all propositions data fetched from the API.
-- **notebook.ipynb**: Jupyter notebook for analyzing the propositions data.
-- **Dockerfile**: Docker setup for a reproducible environment.
-- **requirements.txt**: Python package dependencies.
-- **environment.yml**: Conda environment setup (alternative to Docker).
+See the notebook organization in [notebooks/README.md](notebooks/README.md)
 
-## How to Set Up the Environment
+## Environment Setup
 
-### Option 1: Using Docker
+To configure the development and execution environment for this project, follow the steps below:
 
-1. Install **Docker**: Follow the instructions at https://www.docker.com/get-started to install Docker.
+### Prerequisites
 
-2. Clone the repository.
+- Anaconda or Miniconda installed
+- Git (optional, for cloning the repository)
 
-3. Build the Docker image:
+### Environment Installation
 
+1. Clone the repository:
    ```bash
-   docker build -t my-jupyter-env .
+   git clone [REPOSITORY_URL]
+   cd votes_prediction
    ```
 
-4. Run the Docker container:
-
+2. Create an Anaconda virtual environment:
    ```bash
-   docker run -p 8888:8888 my-jupyter-env
+   # Create conda environment with Python 3.9
+   conda create -n votes_prediction python=3.9
+   
+   # Activate conda environment (Windows/Linux/macOS)
+   conda activate votes_prediction
    ```
 
-5. Open Jupyter Notebook by navigating to `http://localhost:8888` in your browser.
-
-### Option 2: Using Conda
-
-1. Install **Anaconda** or **Miniconda**: Follow the instructions at https://docs.conda.io/en/latest/miniconda.html to install Conda.
-
-2. Clone the repository.
-
-3. Create the Conda environment from the `environment.yml` file:
-
+3. Install dependencies:
    ```bash
-   conda env create -f environment.yml
+   # Using pip within conda environment
+   pip install -r requirements.txt
+   
+   # Alternatively, you can use conda to install packages
+   # conda install --file requirements.txt
    ```
 
-4. Activate the environment:
+### Running Scripts
 
-   ```bash
-   conda activate dados_abertos
-   ```
-
-5. Launch Jupyter Notebook:
-
-   ```bash
-   jupyter notebook
-   ```
-
-### Installing Requirements
-
-If you're not using Docker or Conda and want to set up the environment manually, install the dependencies with:
+To execute Python scripts in the project:
 
 ```bash
-pip install -r requirements.txt
+# Example of running the data acquisition script
+python "01 - Global Prediction/data/data_aquisition.py"
+
+# Example of running the community detection script
+python "01 - Global Prediction/Author's Group/authors_community_detection.py"
 ```
 
-## How to Run the Project
+## Using Jupyter Notebooks
 
-1. After setting up the environment (via Docker, Conda, or manually), you can run the Jupyter notebook and start analyzing the propositions data.
+To work with Jupyter notebooks in the project:
 
-2. To fetch the data, simply run `main.py`:
-
+1. With the conda environment activated, install JupyterLab (if not already installed):
    ```bash
-   python main.py
+   conda install jupyterlab
    ```
 
-This will fetch all propositions and save them to a CSV file (`all_propositions.csv`).
+2. Register the conda environment as a Jupyter kernel:
+   ```bash
+   conda install ipykernel
+   python -m ipykernel install --user --name=votes_prediction --display-name="Python (votes_prediction)"
+   ```
 
-## About the API
+3. Start JupyterLab:
+   ```bash
+   jupyter lab
+   ```
 
-The Chamber of Deputies Open Data API provides data on propositions, including information such as ID, number, summary, author, situation, and more. Check the [official documentation](https://dadosabertos.camara.leg.br/swagger/api.html) for more details.
-
-## License
-
-This project is licensed under the MIT License.
+4. When opening notebooks, select the `Python (votes_prediction)` kernel to ensure access to all installed dependencies.
